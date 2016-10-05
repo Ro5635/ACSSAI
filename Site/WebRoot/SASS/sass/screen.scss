@@ -1,0 +1,53 @@
+@import "compass";
+@import "partials/variables";
+@import "partials/normalize";
+@import "partials/mixins";
+@import "partials/base";
+@import "compass/css3";
+
+
+
+body {
+	width: 75%;
+	margin: 0 auto;
+	background-color: $backgroundColour;
+}
+
+//Tend to avoid tag wide declarations personaly, i'll make an exception for this.
+header {
+	
+	background-color:green;// #FFFFFF;
+	width: 100%;
+	@include border-radius(25px);
+
+	min-height: 15%;
+	margin-bottom: 2%;
+}
+
+#MinionImg {
+	margin: 0 auto;
+	border-top: 20%;
+	width: 80%;
+	text-align: center;
+
+}
+
+
+#fader{
+	width: 100%;
+
+}
+#faderg{
+	width: 100%;
+	
+}
+#faderb{
+	width: 100%;
+	
+}
+
+
+//ToolTip:
+.TT {
+	@include  hui_tooltip(attr(data-tooltip),  "top");
+}
