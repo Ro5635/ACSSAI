@@ -14,19 +14,21 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 
  
 
-<!-- RYANS CODE -->
+<!-- RYANS CODE -->		
+	//Voice feedback
+	<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 
-<script src="three.js-master/three.js-master/build/three.js"></script>
-		<script src="three.js-master/three.js-master/examples/js/controls/OrbitControls.js"></script>
-		<script src="three.js-master/three.js-master/examples/js/loaders/collada/Animation.js"></script>
-		<script src="three.js-master/three.js-master/examples/js/loaders/collada/AnimationHandler.js"></script>
-		<script src="three.js-master/three.js-master/examples/js/loaders/collada/KeyFrameAnimation.js"></script>
-		
-		<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
-		
-		<script src="three.js-master/three.js-master/examples/js/loaders/ColladaLoader.js"></script>
-		<script src="three.js-master/three.js-master/examples/js/Detector.js"></script>
-		
+	//3D environment scripts:
+	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/build/three.js"></script>
+	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/examples/js/loaders/collada/Animation.js"></script>
+	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/examples/js/loaders/collada/AnimationHandler.js"></script>
+	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/examples/js/loaders/collada/KeyFrameAnimation.js"></script>
+	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/examples/js/loaders/ColladaLoader.js"></script>
+	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/examples/js/Detector.js"></script>
+	
+
+
 		<script type="x-shader/x-vertex" id="vertexShader">
 			varying vec3 vWorldPosition;
 			void main() {
@@ -35,6 +37,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 			}
 		</script>
+
+
 		<script type="x-shader/x-fragment" id="fragmentShader">
 			uniform vec3 topColor;
 			uniform vec3 bottomColor;
@@ -47,23 +51,21 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 			}
 		</script>
 
+
 		<script>
 			
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 			var container;
-
 			var camera, scene, renderer, objects;
-			//var particleLight;
+
+			//Var particleLight;
 			var dae;
 			var animation;
 			
-			
-			
-			
 			var loader = new THREE.ColladaLoader();
 			loader.options.convertUpAxis = true;
-			loader.load( 'adam.dae', function ( collada ) {
+			loader.load( 'https://cdn.webaddressgoeshere.com/Content/Ryan3DResources/adam.dae', function ( collada ) {
 
 				dae = collada.scene;
 
@@ -99,15 +101,11 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 				scene.fog = new THREE.Fog( 0xffffff, 1000, 500000 );
 				scene.fog.color.setHSL( 0.6, 0, 1 );
 
-				// Add the COLLADA
-
+				//Add the COLLADA
 				scene.add( dae );
 
-				//particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
-				//scene.add( particleLight );
 
-				// Lights
-
+				//Lights
 				scene.add( new THREE.AmbientLight( 0xcccccc ) );
 
 				var directionalLight = new THREE.DirectionalLight(/*Math.random() * 0xffffff*/0xeeeeee );
@@ -117,11 +115,6 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 				directionalLight.position.normalize();
 				scene.add( directionalLight );
 
-				//var pointLight = new THREE.PointLight( 0xffffff, 4 );
-				//particleLight.add( pointLight );
-				
-				
-			
 
 				
 				renderer = new THREE.WebGLRenderer();
@@ -163,9 +156,6 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 			
 			
 			
-			
-			
-			
 			function onWindowResize() {
 
 				camera.aspect = window.innerWidth / window.innerHeight;
@@ -174,8 +164,6 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 				renderer.setSize( window.innerWidth, window.innerHeight );
 
 			}
-
-			//
 
 			function animate() {
 
@@ -187,12 +175,10 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 			var clock = new THREE.Clock();
 
 			
-			
 			var currentSequence = 'bobing';
-			function render() {
-				
-				
-							
+			
+
+			function render() {				
 				
 				var timer = Date.now() * 0.0005;
 
@@ -202,9 +188,6 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 
 				camera.lookAt( scene.position );
 
-				//particleLight.position.x = Math.sin( timer * 4 ) * 3009;
-				//particleLight.position.y = Math.cos( timer * 5 ) * 4000;
-				//particleLight.position.z = Math.cos( timer * 4 ) * 3009;
 
 				THREE.AnimationHandler.update( clock.getDelta() );
 
@@ -213,9 +196,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 				}else{
 					currentSequence = 'bobing';
 				}
-				////////////////////////////////responsiveVoice.setDefaultVoice("Greek Female"); change me if you can 
 				console.log(animation.currentTime);
-				//if (animation) animation.update(clock.getDelta());
+				
 				
 				if (currentSequence == 'bobing') {
 					if (animation.currentTime > 0.2) {
@@ -240,11 +222,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 
 
 
-
-
-
-
 <br><br>
-<p>The press on the head to speak, you can ask to set the lights to a colour.</p>
+<p>The press on the head to speak</p>
 <div id="transcript">
 </div>
