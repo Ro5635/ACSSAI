@@ -83,5 +83,5 @@ function findVerb(transcript){
 }
 
 $(document).ready(function(){
-	confirm('This will take a good 2 - 3 minutes to load the 3D Enviroment, please wait.');
+	//confirm('This will take a good 2 - 3 minutes to load the 3D Enviroment, please wait.');
 });

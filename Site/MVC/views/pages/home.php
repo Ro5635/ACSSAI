@@ -15,10 +15,10 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
  
 
 <!-- RYANS CODE -->		
-	//Voice feedback
+	<!-- //Voice feedback -->
 	<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 
-	//3D environment scripts:
+	<!-- //3D environment scripts: -->
 	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/build/three.js"></script>
 	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/examples/js/controls/OrbitControls.js"></script>
 	<script src="https://cdn.webaddressgoeshere.com/Ryan3DJSScripts/three.js-master/examples/js/loaders/collada/Animation.js"></script>
@@ -137,8 +137,6 @@ include($_SERVER['DOCUMENT_ROOT'].'/../PHPIncludes/Views/pages/home/INC_TopPageG
 				scene.add( ground );
 				ground.receiveShadow = true;
 				
-				
-				//
 
 				var onDocumentMouseDown = function ( event ) {
 
