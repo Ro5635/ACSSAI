@@ -1,0 +1,81 @@
+@import "compass";
+@import "partials/variables";
+@import "partials/normalize";
+@import "partials/mixins";
+@import "partials/base";
+@import "compass/css3";
+
+
+//Spacer used to seperate the  articles in the featured section:
+.Spacer{
+	height: 10%;
+
+	@include respond-to('mobile') {
+		height: 15%;
+
+	}
+	@include respond-to('small') {
+		height: 15%		
+	}
+
+}
+
+
+#loginBox{
+	width:25%;
+	background-color: $color1;
+	@include border-radius(10px);
+	margin: 0 auto;
+	padding: 2%;
+	color: white;
+	@include dropShaddowBellow(0 40px 50px -12px);
+ 	-webkit-transition-duration: 1s; /* Safari */
+    transition-duration: 1s;
+	input {
+		color: black;
+	}
+
+	@include respond-to('mobile') {
+	width:90%;
+
+	}
+
+	@include respond-to('small') {
+	width:60%;
+	}
+
+	@include respond-to('medium') {
+	width:40%;
+	}
+
+	@include respond-to('large') {
+	width:25%;
+
+	}
+}
+#LoginFormTitle{
+	text-align: center;
+	font-size: 1.8em;
+	width: 100%;
+	display: block;
+}
+#buttonSpacer{
+	width:43%;
+	display: inline-block;
+	background-color: red;
+}
+.formElement{
+	margin: 0 auto;
+	text-align: center;
+}
+.TextualInput{
+	width: 100%;
+}
+.g-recaptcha{
+ 	margin: 0 auto;
+ 	width: 304px;
+}
+#formElements{
+	margin: 0 auto;
+	width: 80%;
+}

@@ -1,6 +1,6 @@
 <?php
 	//Require the database connection:
-  	require_once('../Connection.php');
+  	require_once('../Config.php');
 
 	//This should be changed to explode the URL and pull the neccasaray variables as array index
 	$URL =  $_SERVER['REQUEST_URI'];
@@ -36,6 +36,29 @@
 		//Action at index position 0:
 		$action = $actionAndGETVars[0];
 	}
+
+
+	//	At this point i am looking to keep the database out of this script, this script is called for all of the requests to the server
+	//and as such I wish to keep it as light as possile. 
+
+
+	$controllersAuthenticationLvl0 = [ 'ALL THE CURRENT CONTROLLERS NEED TO BE HERE!!'];
+
+	$controllersAuthenticationLvl1 = [ 'create' ];
+
+	//Create an array with all of the controllers that have been specified with a authentication level.
+	$allControlersAuthenticationSpecified = $controllersAuthenticationLvl0;
+	array_push( $allControlersAuthenticationSpecified , $controllersAuthenticationLvl1 );
+
+
+    if( !in_array($controller , $allControlersAuthenticationSpecified ) ){
+        require_once($_SERVER['DOCUMENT_ROOT'] . '../PHPIncludes/CheckLogin.php');
+    
+    }else{
+
+    	//Find the authentication level...
+    	
+    }
 
 	//Call standardisation to continue with page rendering:
 

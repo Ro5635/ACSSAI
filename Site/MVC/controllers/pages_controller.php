@@ -88,15 +88,21 @@
 
     public function error() {
 
-      //Add the css file:
-      $cssFiles = [ 'error.css'];
+      //Require the class for storing CSS and Script requirements:
+      require_once($_SERVER['DOCUMENT_ROOT'] . '../PHPIncludes/pageLinkScriptsCSS.php');
 
-      require_once('views/StdHeader.php');
-      ////
+      $pageRequirements = new pageLinkScriptsCSS();
+
+      $pageRequirements->add("css", ['error.css']);
+
+      $pageRequirements->add("title", 'The Sky Is Falling');
+
+      callStructural('header','std',$pageRequirements);
+      
       require_once('views/pages/error.php');
 
-      //render the error footer
-      $footerType = "error";
+      //Render the page footer:
+      callStructural("footer", 'std', $pageRequirements); 
 
     }
   }

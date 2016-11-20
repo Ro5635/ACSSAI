@@ -7,8 +7,7 @@
 // @author Robert Curran robert@robertcurran.co.uk
 
 class Login {
-  // we define 3 attributes
-  // they are public so that we can access them using $Product->author directly
+
 	public $UserName;
 	public $Type;
 	public $authenticated;

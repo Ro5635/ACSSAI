@@ -1,6 +1,6 @@
 <?php
   //All of the controllers and there associated actions:
-  $controllers = array('pages' => ['home', 'slider', 'mini',  'error'], 'ajax' => ['speachresponse','setslider','getcolour'] , 'header' => ['std', 'error'] , 'footer' => ['std', 'error'] );
+  $controllers = array('pages' => ['home', 'slider', 'mini',  'error'], 'login' => ['form'] , 'ajax' => ['speachresponse','setslider','getcolour'] , 'header' => ['std', 'error'] , 'footer' => ['std', 'error'] );
 
   if (array_key_exists($controller, $controllers)) {
 
@@ -38,6 +38,12 @@
 
          $controller = new FooterController();
          break;
+
+        case 'login':
+        
+         $controller = new LoginController();
+         break;
+
       }
 
       $controller->{ $action }();
